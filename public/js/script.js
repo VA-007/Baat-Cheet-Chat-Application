@@ -41,7 +41,6 @@ const autoscroll = () => {
 
 // --> Rendering messages through Event Handlers and Mustache template Engine
 socket.on('message', (message) => {          // Text message
-  console.log(message);
   const html = Mustache.render(messageTemplate, {
     username: message.username,
     message: message.text,          // ES6 shorthand property
@@ -53,7 +52,6 @@ socket.on('message', (message) => {          // Text message
 });
 
 socket.on('locationMessage', (url) => {          // Location message
-  console.log(url);
   const html = Mustache.render(locationTemplate, {
     username: url.username,
     url: url.url,
@@ -87,7 +85,7 @@ $messageForm.addEventListener('submit', (e) => {
     $messageFormInput.focus();
 
     if (error) {
-      return console.log(error);
+      return alert(error);
     }
 
     console.log('Delivered!');
